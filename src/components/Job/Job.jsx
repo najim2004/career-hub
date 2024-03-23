@@ -2,8 +2,9 @@
 import PropTypes from 'prop-types';
 import locationImg from '../../assets/icons/Location.png';
 import dollar from '../../assets/icons/money.png';
+import { Link } from 'react-router-dom';
 const Job = ({ job }) => {
-    const { logo, job_title, company_name, remote_or_onsite, location, job_type, salary } = job;
+    const {id, logo, job_title, company_name, remote_or_onsite, location, job_type, salary } = job;
     return (
         <div className="p-10 border-[1px] border-[#E8E8E8] rounded-lg">
             <div className="flex-grow">
@@ -25,7 +26,7 @@ const Job = ({ job }) => {
                     </p>
                 </div>
             </div>
-            <button className="text-xl btn btn-sm font-extrabold text-white w-[157px] h-12 bg-gradient-to-r from-[#7E90FE] to-[#9873FF] rounded-[4px]">View Details</button>
+            <Link to={`/job/${id}`}><button className="text-xl btn btn-sm font-extrabold text-white w-[157px] h-12 bg-gradient-to-r from-[#7E90FE] to-[#9873FF] rounded-[4px]">View Details</button></Link>
         </div>
     );
 };
