@@ -8,11 +8,15 @@ import {
 } from "react-router-dom";
 import Root from './components/Root/Root';
 import Home from './components/Home/Home';
+import Applied from './components/Applied/Applied';
+import Statistics from './components/Statistics/Statistics';
+import ErrorPage from './components/ErrorPage/ErrorPage';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element:<Root></Root>,
+    errorElement:<ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
@@ -20,11 +24,15 @@ const router = createBrowserRouter([
       },
       {
         path: "/applied",
-        element: <Home></Home>
+        element: <Applied></Applied>
       },
+      // {
+      //   path: "/blog",
+      //   element: <Home></Home>
+      // },
       {
-        path: "/blog",
-        element: <Home></Home>
+        path: "/Statistics",
+        element: <Statistics></Statistics>
       }
     ]
   },
