@@ -5,6 +5,7 @@ import dollar from '../../assets/icons/money.png';
 import { Link } from 'react-router-dom';
 const Job = ({ job }) => {
     const {id, logo, job_title, company_name, remote_or_onsite, location, job_type, salary } = job;
+    
     return (
         <div className="p-10 border-[1px] border-[#E8E8E8] rounded-lg">
             <div className="flex-grow">

@@ -1,4 +1,4 @@
-import { useLoaderData, useParams } from "react-router-dom";
+import { Link, useLoaderData, useParams } from "react-router-dom";
 import bg1 from '../../assets/images/bg1.png';
 import bg2 from '../../assets/images/bg2.png';
 import dollar from '../../assets/icons/money.png';
@@ -6,6 +6,10 @@ import calender from '../../assets/icons/calendar.png';
 import emails from '../../assets/icons/email.png';
 import phones from '../../assets/icons/phone.png';
 import location2 from '../../assets/icons/location2.png';
+import { toast } from 'react-toastify';
+import { saveJobApplication } from '../../Utility/localStorage';
+
+
 
 
 const JobDetails = () => {
@@ -13,7 +17,11 @@ const JobDetails = () => {
     const { id } = useParams();
     const job = jobs.find(job => job.id === parseInt(id));
     const { job_title, salary, job_description, job_responsibility, educational_requirements, experiences, contact_information } = job;
-    const { phone, email, address } = contact_information
+    const { phone, email, address } = contact_information;
+    const handleApplyNow = () => {
+        saveJobApplication(parseInt(id));
+        toast.success('Applied Successfully!')
+    };
     return (
         <div className=" mb-[130px]">
             <div className="mb-[130px]  relative h-[218px] flex justify-center items-center bg-gray-50">
@@ -83,7 +91,10 @@ const JobDetails = () => {
                             </span>
                         </p>
                     </div>
-                    <button className="mt-6 btn w-full h-[65px] bg-gradient-to-r from-[#7E90FE] to-[#9873FF] rounded-[8px] text-xl font-extrabold text-white">Apply Now</button>
+                    <button onClick={handleApplyNow} className="mt-6 btn w-full h-[65px] bg-gradient-to-r from-[#7E90FE] to-[#9873FF] rounded-[8px] text-xl font-extrabold text-white">Apply Now</button>
+                    <div className="w-full flex justify-center mt-4">
+                        <Link className="text-center text-red-400 w-full text-xl font-bold" to={'/applied'}>Click here for go to Applied Jobs</Link>
+                    </div>
                 </div>
             </div>
 
